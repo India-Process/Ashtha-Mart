@@ -1,20 +1,9 @@
 import React from "react";
-import {
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-  Image,
-  SafeAreaView,
-  Platform,
-} from "react-native";
-import { Block, Text, theme, Button } from "galio-framework";
-import { Icon } from "../components";
-import { Images, materialTheme } from "../constants";
-import { HeaderHeight } from "../constants/utils";
+import { StyleSheet, Dimensions, ScrollView, Image } from "react-native";
+import { Block, Text, theme } from "galio-framework";
 import { connect } from "react-redux";
 import { FlatList } from "react-native-gesture-handler";
-const { width, height } = Dimensions.get("screen");
-const thumbMeasure = (width - 48 - 32) / 3;
+const { width, height } = Dimensions.get("window");
 
 class Categories extends React.Component {
   render() {
@@ -50,6 +39,8 @@ const styles = StyleSheet.create({
     paddingVertical: theme.SIZES.BASE,
     justifyContent: "center",
     flex: 1,
+    backgroundColor: "white",
+    height:height
   },
 
   category: {

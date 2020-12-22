@@ -35,7 +35,7 @@ function CustomDrawerContent({ drawerPosition, navigation, profile, focused, sta
       <Block flex={0.25} style={styles.header}>
         <TouchableWithoutFeedback onPress={() => navigation.navigate("Profile")}>
           <Block style={styles.profile}>
-            <Image source={require("../assets/avatar.png")} style={styles.avatar} />
+            <Image source={require("../assets/icon.png")} style={styles.avatar} />
             {user === null ? (
               <Text h5 color={"white"}>
                 Ashtha Mart

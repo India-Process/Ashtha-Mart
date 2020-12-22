@@ -1,4 +1,4 @@
-import { ADDRESS_FAIL, ADDRESS_SUCCESS, RESET_FAIL, RESET_SUCCESS, USER_VALUE } from "../actions/types";
+import { ADDRESS_FAIL, ADDRESS_SUCCESS, RESET_FAIL, RESET_SUCCESS, USER_VALUE ,RESET_USER_VALUE} from "../actions/types";
 
 const INITIAL_STATE = {
   cust_cname: "",
@@ -17,13 +17,15 @@ export default (state = INITIAL_STATE, action) => {
     case USER_VALUE:
       return { ...state, [action.payload.prop]: action.payload.value };
     case ADDRESS_SUCCESS:
-      return { ...state };
+      return { ...state, message: action.payload };
     case ADDRESS_FAIL:
-      return { ...state };
+      return { ...state, error: "Failed to update" };
     case RESET_FAIL:
-      return { ...state };
+      return { ...state, message: action.payload };
     case RESET_SUCCESS:
-      return { ...state };
+      return { ...state, message: action.payload };
+    case RESET_USER_VALUE:
+      return { ...state, ...INITIAL_STATE };
     default:
       return state;
   }

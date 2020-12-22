@@ -7,7 +7,7 @@ import { materialTheme } from "../constants";
 const ShareScreen = ({ navigation }) => {
   useEffect(() => {
     share();
-  });
+  },[]);
 
   const share = async () => {
     try {

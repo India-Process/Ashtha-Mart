@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
 
 import { Block, Icon, Text } from "galio-framework";
 import { materialTheme } from "../../constants";
+
+const { height, width } = Dimensions.get("window");
 
 const DATA = [
   {
@@ -49,8 +51,6 @@ const DATA = [
   },
 ];
 
-
-
 class OrderList extends Component {
   renderColor() {
     switch (title) {
@@ -69,59 +69,55 @@ class OrderList extends Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <Block style={styles.container}>
-          <Text center h5>
-            Order List
-          </Text>
-          <Block style={[styles.main]}>
-            <Block row space="between" style={styles.list}>
-              <Block row>
-                <Text>Order</Text>
-                <Icon name="filter" family="AntDesign" size={15} />
-              </Block>
-              <Block row>
-                <Text>Date Purchased</Text>
-                <Icon name="filter" family="AntDesign" size={15} />
-              </Block>
-              <Block row>
-                <Text>Status</Text>
-                <Icon name="filter" family="AntDesign" size={15} />
-              </Block>
-              <Block row>
-                <Text>Total</Text>
-                <Icon name="filter" family="AntDesign" size={15} />
-              </Block>
-              <Block>
-                <Text>Action</Text>
-              </Block>
+      <Block safe  style={styles.container}>
+        <Text center h5>
+          Order List
+        </Text>
+        <Block style={[styles.main]}>
+          <Block row space="between" style={styles.list}>
+            <Block row>
+              <Text>Order</Text>
+              <Icon name="filter" family="AntDesign" size={15} />
             </Block>
-            {DATA.map((item) => {
-              return (
-                <Block row space="between" style={styles.list}>
-                  <Block row>
-                    <Text>{item.order}</Text>
-                  </Block>
-                  <Block row>
-                    <Text>{item.date}</Text>
-                  </Block>
-                  <Block row style={styles.status}>
-                    <Text color={materialTheme.COLORS.WHITE}>
-                      {item.status}
-                    </Text>
-                  </Block>
-                  <Block row>
-                    <Text>{item.total}</Text>
-                  </Block>
-                  <Block>
-                    <Icon name="eye" family="Entypo" size={15} />
-                  </Block>
-                </Block>
-              );
-            })}
+            <Block row>
+              <Text>Date Purchased</Text>
+              <Icon name="filter" family="AntDesign" size={15} />
+            </Block>
+            <Block row>
+              <Text>Status</Text>
+              <Icon name="filter" family="AntDesign" size={15} />
+            </Block>
+            <Block row>
+              <Text>Total</Text>
+              <Icon name="filter" family="AntDesign" size={15} />
+            </Block>
+            <Block>
+              <Text>Action</Text>
+            </Block>
           </Block>
+          {DATA.map((item, index) => {
+            return (
+              <Block row space="between" style={styles.list} key={index}>
+                <Block row>
+                  <Text>{item.order}</Text>
+                </Block>
+                <Block row>
+                  <Text>{item.date}</Text>
+                </Block>
+                <Block row style={styles.status}>
+                  <Text color={materialTheme.COLORS.WHITE}>{item.status}</Text>
+                </Block>
+                <Block row>
+                  <Text>{item.total}</Text>
+                </Block>
+                <Block>
+                  <Icon name="eye" family="Entypo" size={15} />
+                </Block>
+              </Block>
+            );
+          })}
         </Block>
-      </SafeAreaView>
+      </Block>
     );
   }
 }
@@ -129,6 +125,8 @@ class OrderList extends Component {
 const styles = StyleSheet.create({
   container: {
     marginTop: materialTheme.SIZES.BASE,
+    backgroundColor: "white",
+    height: height,
   },
   main: {
     margin: materialTheme.SIZES.BASE,

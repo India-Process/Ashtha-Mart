@@ -37,3 +37,5 @@ export const ADDRESS_FAIL = "address_fail";
 
 export const RESET_SUCCESS = "reset_success";
 export const RESET_FAIL = "reset_fail";
+
+export const RESET_USER_VALUE="reset_user_value";
