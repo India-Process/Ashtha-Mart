@@ -4,8 +4,19 @@ import { Block, Text, Input } from "galio-framework";
 
 import { materialTheme } from "../constants";
 import { connect } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class Profile extends React.Component {
+  state = {
+    user: null,
+  };
+
+  async componentDidMount() {
+    const value = await AsyncStorage.getItem("user");
+    const user = JSON.parse(value);
+    this.setState({ user });
+  }
+
   render() {
     const { user } = this.props;
     return (
@@ -15,7 +26,9 @@ class Profile extends React.Component {
             <Image source={require("../assets/avatar.png")} resizeMode={"contain"} style={styles.avatar} />
           </Block>
           {user === null ? (
-            <Text center color="red" size={20} >My Profile</Text>
+            <Text center color="red" size={20}>
+              My Profile
+            </Text>
           ) : (
             <>
               <Block style={styles.container}>

@@ -8,8 +8,7 @@ import { connect } from "react-redux";
 import { materialTheme } from "../constants";
 
 const { width } = Dimensions.get("window");
-const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
-
+const iPhoneX = () => Platform.OS === "ios" && (height === 812 || width === 812 || height === 896 || width === 896);
 
 const BasketButton = ({ style, navigation, item }) => (
   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate("Checkout")}>
@@ -112,11 +111,11 @@ class Header extends React.Component {
           title={title}
           style={styles.navbar}
           transparent={transparent}
-          left={() => <Icon name="home" family="entypo" color="red" />}
+          left={<Icon name={back ? "chevron-left" : "menu"} family="entypo" color="white" size={25} />}
           right={this.renderRight()}
           rightStyle={{ alignItems: "center" }}
           leftStyle={{ flex: 0.4, paddingTop: 2, colo: "white" }}
-          leftIconName={back ? "chevron-left" : "navicon"}
+          //leftIconName={back ? "chevron-left" : "navicon"}
           leftIconColor={materialTheme.COLORS.WHITE}
           titleStyle={[styles.title, { color: materialTheme.COLORS.WHITE }]}
           onLeftPress={this.handleLeftPress}
@@ -148,9 +147,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     color: materialTheme.COLORS.WHITE,
-    paddingTop: iPhoneX ? theme.SIZES.BASE * 4 : theme.SIZES.BASE,
+    paddingTop: iPhoneX ? theme.SIZES.BASE * 3 : theme.SIZES.BASE,
     paddingBottom: theme.SIZES.BASE * 1.5,
-    zIndex:5
+    zIndex: 5,
   },
   shadow: {
     backgroundColor: theme.COLORS.WHITE,

@@ -26,6 +26,8 @@ import CustomDrawerContent from "./Menu";
 import { Icon, Header } from "../components";
 import { Images, materialTheme } from "../constants/";
 import OrderList from "../screens/User/Orderlist";
+import ShareScreen from '../components/Share'
+
 
 const { width } = Dimensions.get("screen");
 
@@ -524,6 +526,7 @@ function AppStack(props) {
           ),
         }}
       />
+      <Drawer.Screen name="Share" component={ShareScreen} />
     </Drawer.Navigator>
   );
 }

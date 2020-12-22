@@ -11,8 +11,8 @@ import { useEffect } from "react/cjs/react.development";
 
 function CustomDrawerContent({ drawerPosition, navigation, profile, focused, state }) {
   const insets = useSafeAreaInsets();
-  const screens = ["Home", "Categories", "Signin"];
-  const profilescreen = ["Home", "Categories", "Profile", "OrderList", "Address", "Change Password"];
+  const screens = ["Home", "Categories", "Signin" ,"Share"];
+  const profilescreen = ["Home", "Categories", "Profile", "OrderList", "Address", "Change Password","Share"];
 
   const [user, setUser] = useState(null);
 

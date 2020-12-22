@@ -1,11 +1,9 @@
-import React,{Component} from "react";
+import React, { Component } from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import { Block, Text, theme } from "galio-framework";
 
 import Icon from "./Icon";
 import materialTheme from "../constants/Theme";
-
-
 
 class DrawerItem extends Component {
   renderIcon = () => {
@@ -36,6 +34,8 @@ class DrawerItem extends Component {
         return (
           <Icon size={16} name="adduser" family="AntDesign" color={focused ? "white" : materialTheme.COLORS.MUTED} />
         );
+      case "Share":
+        return <Icon size={16} name="share" family="entypo" color={focused ? "white" : materialTheme.COLORS.MUTED} />;
       case "Logout":
         return (
           <Icon size={16} name="ios-log-out" family="ionicon" color={focused ? "white" : materialTheme.COLORS.MUTED} />
@@ -46,7 +46,7 @@ class DrawerItem extends Component {
   };
 
   render() {
-    const { focused, title, navigation,user } = this.props;
+    const { focused, title, navigation, user } = this.props;
 
     return (
       <TouchableOpacity
@@ -70,7 +70,7 @@ class DrawerItem extends Component {
   }
 }
 
-export default DrawerItem
+export default DrawerItem;
 
 const styles = StyleSheet.create({
   defaultStyle: {
