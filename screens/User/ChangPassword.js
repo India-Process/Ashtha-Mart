@@ -13,17 +13,21 @@ class ChangePassword extends Component {
     errorMessage: "",
   };
 
-  onSubmit=()=> {
+  onSubmit = () => {
     const { password } = this.props;
     if (!password) {
       this.setState({ errorMessage: "Please fill the password" });
+      setTimeout(() => {
+        this.setState({ errorMessage: "" });
+      }, 2000);
     } else {
       this.props.resetPassword({ password });
     }
-  }
+  };
 
   render() {
-    const { navigation, password,message,error } = this.props;
+    const { navigation, password, message, error } = this.props;
+    const { errorMessage } = this.state;
     return (
       <Block flex middle>
         <Text h5>Change Password</Text>
@@ -73,8 +77,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   password: state.user.password,
-  message:state.user.message,
-  error:state.user.error,
+  message: state.user.message,
+  error: state.user.error,
 });
 
 export default connect(mapStateToProps, { userValue, resetPassword })(ChangePassword);

@@ -1,9 +1,10 @@
 import React, { PureComponent } from "react";
-import { StyleSheet, Dimensions, ScrollView, FlatList, ActivityIndicator } from "react-native";
+import { StyleSheet, Dimensions, ScrollView, FlatList, ActivityIndicator, Image } from "react-native";
 import { Block, Text, theme } from "galio-framework";
 
 //component
 import { SliderBox } from "react-native-image-slider-box";
+import Carousel from "pinar";
 import { Product, Heading } from "../components";
 import { materialTheme } from "../constants";
 
@@ -74,18 +75,17 @@ class Home extends PureComponent {
                 />
               </Block>
               <Heading title="Categories" />
-              <Block>
-                <FlatList
-                  data={category}
-                  renderItem={({ item }) => (
-                    <Block card style={styles.category}>
-                      <Text>{item.tcat_name}</Text>
+              <Block middle>
+                <Carousel loop={true} autoplay={true} height={200} showsDots={false}>
+                  {category.map((item) => (
+                    <Block flex style={styles.category}>
+                      <Block middle style={styles.categoryImage}>
+                        <Image source={require("../assets/category.png")} resizeMode={"contain"} />
+                      </Block>
+                      <Text style={{ marginTop: 10 }}>{item.tcat_name}</Text>
                     </Block>
-                  )}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  keyExtractor={(item) => item.tcat_id}
-                />
+                  ))}
+                </Carousel>
               </Block>
               <Heading title="Latest Product" />
               <Block>
@@ -184,13 +184,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   category: {
-    height: materialTheme.SIZES.BASE * 7,
-    width: materialTheme.SIZES.BASE * 7,
-    justifyContent: "flex-start",
+    height: 100,
+    justifyContent: "center",
     alignItems: "center",
-    margin: 3,
-    padding: 5,
     borderColor: materialTheme.COLORS.BORDER_COLOR,
+  },
+  categoryImage: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
