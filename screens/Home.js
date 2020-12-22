@@ -110,7 +110,7 @@ class Home extends PureComponent {
                     this.flatList_Ref = ref;
                   }}
                   removeClippedSubviews={true}
-                  maxToRenderPerBatch={5}
+                  maxToRenderPerBatch={10}
                   initialNumToRender={2}
                   numColumns={2}
                   columnWrapperStyle={styles.space}

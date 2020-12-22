@@ -111,7 +111,11 @@ class Header extends React.Component {
           title={title}
           style={styles.navbar}
           transparent={transparent}
-          left={<Icon name={back ? "chevron-left" : "menu"} family="entypo" color="white" size={25} />}
+          left={
+            <TouchableOpacity onPress={this.handleLeftPress}>
+              <Icon name={back ? "chevron-left" : "menu"} family="entypo" color="white" size={25} />
+            </TouchableOpacity>
+          }
           right={this.renderRight()}
           rightStyle={{ alignItems: "center" }}
           leftStyle={{ flex: 0.4, paddingTop: 2, colo: "white" }}

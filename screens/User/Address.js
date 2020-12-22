@@ -12,14 +12,17 @@ class Address extends Component {
     errorMessage: "",
   };
 
-  onSubmit() {
+  onSubmit = () => {
     const { cust_cname, cust_country, cust_state, cust_city, cust_zip, cust_address } = this.props;
     if (!cust_cname || !cust_country || !cust_state || !cust_city || !cust_zip || !cust_address) {
       this.setState({ errorMessage: "Please fill in all fields" });
+      setTimeout(() => {
+        this.setState({ errorMessage: "" });
+      }, 2000);
     } else {
       this.props.createAddress({ cust_cname, cust_country, cust_state, cust_city, cust_zip, cust_address });
     }
-  }
+  };
 
   render() {
     const {
@@ -34,18 +37,24 @@ class Address extends Component {
       message,
       error,
     } = this.props;
+    const { errorMessage } = this.state;
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block flex safe middle style={styles.main}>
           <Text h5>Contact Address</Text>
           {message ? (
-            <Text cener color="green" size={20}>
+            <Text center color="green" size={20}>
               {message}
             </Text>
           ) : null}
           {error ? (
             <Text center color="red" size={20}>
               {error}
+            </Text>
+          ) : null}
+          {errorMessage ? (
+            <Text center size={20} color="red">
+              {errorMessage}
             </Text>
           ) : null}
           <Block style={styles.container}>
@@ -63,6 +72,7 @@ class Address extends Component {
               placeholder="Country"
               color="black"
               placeholderTextColor="gray"
+              textContentType="countryName"
               value={cust_country}
               onChangeText={(text) => userValue({ prop: "cust_country", value: text })}
             />
@@ -71,6 +81,7 @@ class Address extends Component {
               placeholder="State"
               color="black"
               placeholderTextColor="gray"
+              textContentType="addressState"
               value={cust_state}
               onChangeText={(text) => userValue({ prop: "cust_state", value: text })}
             />
@@ -80,6 +91,8 @@ class Address extends Component {
               placeholder="Zip Code"
               color="black"
               placeholderTextColor="gray"
+              textContentType="postalCode"
+              maxLength={6}
               value={cust_zip}
               onChangeText={(text) => userValue({ prop: "cust_zip", value: text })}
             />
@@ -97,6 +110,7 @@ class Address extends Component {
               placeholder="Address "
               color="black"
               placeholderTextColor="gray"
+              textContentType="streetAddressLine1"
               value={cust_address}
               onChangeText={(text) => userValue({ prop: "cust_address", value: text })}
             />
