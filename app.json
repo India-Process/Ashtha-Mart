@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "aashth",
+    "slug": "aashth",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/logo4.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f6dfc5"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "aastha.ecommernce"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ef7e00"
+      },
+      "package": "aastha.ecommernce"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
