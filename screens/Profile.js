@@ -18,7 +18,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user } = this.state;
     return (
       <Block flex safe style={styles.profile}>
         <ScrollView showsVerticalScrollIndicator={false}>
