@@ -1,15 +1,11 @@
 import React,{Component} from "react";
-import { StyleSheet, Dimensions, ScrollView, Image, SafeAreaView } from "react-native";
-import { Block, Text, theme } from "galio-framework";
+import { ScrollView, SafeAreaView } from "react-native";
 import { connect } from "react-redux";
-import { FlatList } from "react-native-gesture-handler";
-const { width, height } = Dimensions.get("window");
 
 import {Accordion} from "../components"
 
 class Categories extends Component {
   render() {
-    const { category } = this.props;
     return (
       <SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -33,31 +29,13 @@ class Categories extends Component {
             />
           </Block> */}
           <Accordion />
+          
         </ScrollView>
       </SafeAreaView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: theme.SIZES.BASE,
-    justifyContent: "center",
-    flex: 1,
-    backgroundColor: "white",
-  },
-
-  category: {
-    borderRadius: 2,
-    borderWidth: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    padding: 5,
-    margin: 5,
-    width: 100,
-  },
-  name: {},
-});
 
 const mapStateToProps = (state) => ({
   category: state.products.category,

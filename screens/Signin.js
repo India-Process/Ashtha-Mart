@@ -12,9 +12,17 @@ import { userValue, loginUser } from "../redux/actions/authAction";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 class Signin extends Component {
+  state = {
+    errorMessage: "",
+  };
+
   onButtonPress() {
     const { mobile, password } = this.props;
-    this.props.loginUser({ mobile, password });
+    if (!mobile || !password) {
+      this.setState({ errorMessage: "Please fill the credentials" });
+    } else {
+      this.props.loginUser({ mobile, password });
+    }
   }
 
   render() {
@@ -39,11 +47,17 @@ class Signin extends Component {
               {loginerror}
             </Text>
           ) : null}
+          {errorMessage ? (
+            <Text size={20} color="red">
+              {errorMessage}
+            </Text>
+          ) : null}
           {loginmessage ? (
             <Text size={20} color="green">
               {loginmessage}
             </Text>
           ) : null}
+
           <Block flex center space="evenly">
             <Block flex>
               <Input
@@ -71,7 +85,6 @@ class Signin extends Component {
               <Text
                 color={theme.COLORS.ERROR}
                 size={theme.SIZES.FONT * 0.75}
-                onPress={() => Alert.alert("Not implemented")}
                 style={{
                   alignSelf: "flex-end",
                   lineHeight: theme.SIZES.FONT * 2,

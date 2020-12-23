@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TouchableOpacity, StyleSheet, Image, FlatList, Dimensions, ScrollView,Alert } from "react-native";
+import { TouchableOpacity, StyleSheet, Image, FlatList, Dimensions, ScrollView, Alert } from "react-native";
 import { Transitioning, Transition } from "react-native-reanimated";
 import { Block, Text, Icon } from "galio-framework";
 import { connect } from "react-redux";
@@ -114,7 +114,7 @@ const Accordion = () => {
               setSelectedColor(bg === selectedColor ? "" : bg);
               onClick(index);
               toggleExpand();
-            } }
+            }}
             style={styles.cardContainer}
           >
             <Block card style={[styles.card]}>
@@ -125,14 +125,14 @@ const Accordion = () => {
                 </Text>
                 <Icon name={expanded ? "chevron-up" : "chevron-down"} family="entypo" size={25} />
               </Block>
-
-              {selectedColor === bg && (
+              {selectedColor === bg  && (
                 <Block style={{ marginTop: 20, backgroundColor: "white" }}>
                   <FlatList
                     data={subCategories}
                     renderItem={renderItem}
                     numColumns={3}
-                    keyExtractor={(_, index) => index.toString()} />
+                    keyExtractor={(_, index) => index.toString()}
+                  />
                 </Block>
               )}
             </Block>

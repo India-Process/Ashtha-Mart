@@ -52,7 +52,7 @@ export default (state = INITIAL_STATE, action) => {
         user: action.user,
         loginerror: "",
         authloading: false,
-        email: "",
+        mobile: "",
         password: "",
       };
 
