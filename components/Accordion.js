@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TouchableOpacity, StyleSheet, Image, FlatList, Dimensions } from "react-native";
+import { TouchableOpacity, StyleSheet, Image, FlatList, Dimensions, ScrollView,Alert } from "react-native";
 import { Transitioning, Transition } from "react-native-reanimated";
 import { Block, Text, Icon } from "galio-framework";
 import { connect } from "react-redux";
@@ -75,7 +75,7 @@ const colors = [
   },
 ];
 
-const Accordion = ({}) => {
+const Accordion = () => {
   const ref = React.useRef();
   const [selectedColor, setSelectedColor] = React.useState("");
   const [expanded, setExpanded] = React.useState(false);
@@ -91,19 +91,30 @@ const Accordion = ({}) => {
     setExpanded(!expanded);
   };
 
+  const renderItem = ({ item }) => {
+    return (
+      <Block card middle height={100} width={width / 3}>
+        <Image source={require("../assets/category.png")} resizeMode={"contain"} width={200} height={200} />
+        <Text size={15} center color="black" key={item}>
+          {item}
+        </Text>
+      </Block>
+    );
+  };
+
   return (
     <Transitioning.View ref={ref} transition={transition} style={styles.container}>
-      {colors.map(({ bg, color, category, subCategories }, index) => {
+      {data.map(({ bg, color, category, subCategories }, index) => {
         return (
           <TouchableOpacity
             key={category}
             activeOpacity={0.9}
             onPress={() => {
               ref.current.animateNextTransition();
-              setSelectedColor(bg === selectedColor ? "red" : bg);
+              setSelectedColor(bg === selectedColor ? "" : bg);
               onClick(index);
               toggleExpand();
-            }}
+            } }
             style={styles.cardContainer}
           >
             <Block card style={[styles.card]}>
@@ -116,24 +127,12 @@ const Accordion = ({}) => {
               </Block>
 
               {selectedColor === bg && (
-                <Block style={{ marginTop: 20, backgroundColor: selectedColor }}>
+                <Block style={{ marginTop: 20, backgroundColor: "white" }}>
                   <FlatList
                     data={subCategories}
-                    renderItem={({ item }) => (
-                      <Block card middle height={100} width={width / 3}>
-                        <Image
-                          source={require("../assets/category.png")}
-                          resizeMode={"contain"}
-                          width={200}
-                          height={200}
-                        />
-                        <Text size={15} center color="black" key={item}>
-                          {item}
-                        </Text>
-                      </Block>
-                    )}
+                    renderItem={renderItem}
                     numColumns={3}
-                  />
+                    keyExtractor={(_, index) => index.toString()} />
                 </Block>
               )}
             </Block>
@@ -147,10 +146,10 @@ const Accordion = ({}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
   },
   cardContainer: {
     flexGrow: 1,
+    backgroundColor: "white",
   },
   card: {
     justifyContent: "center",
