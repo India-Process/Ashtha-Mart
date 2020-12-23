@@ -20,7 +20,7 @@ class Product extends Component {
   render() {
     const { navigation, product, style, priceColor } = this.props;
     return (
-      <Block flex  style={[styles.product, style]}>
+      <Block flex   style={[styles.product, style]}>
         <TouchableWithoutFeedback
           onPress={() => navigation.navigate("Detail", { product: product })}
         >
@@ -82,9 +82,9 @@ const styles = StyleSheet.create({
     backgroundColor: theme.COLORS.WHITE,
     marginVertical: 5,
     minHeight: 100,
-    width: width,
     flexDirection: "column",
     margin: 5,
+    width:width/2
   },
   productTitle: {
     flex: 1,

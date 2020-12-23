@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Component} from "react";
 import { StyleSheet, Dimensions, ScrollView, Image, SafeAreaView } from "react-native";
 import { Block, Text, theme } from "galio-framework";
 import { connect } from "react-redux";
@@ -7,13 +7,13 @@ const { width, height } = Dimensions.get("window");
 
 import {Accordion} from "../components"
 
-class Categories extends React.Component {
+class Categories extends Component {
   render() {
     const { category } = this.props;
     return (
       <SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Block flex middle style={styles.container}>
+          {/* <Block middle style={styles.container}>
             <FlatList
               data={category}
               renderItem={({ item }) => (
@@ -31,7 +31,7 @@ class Categories extends React.Component {
               numColumns={3}
               keyExtractor={(item) => item.tcat_id}
             />
-          </Block>
+          </Block> */}
           <Accordion />
         </ScrollView>
       </SafeAreaView>
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1,
     backgroundColor: "white",
-    height: height,
   },
 
   category: {
