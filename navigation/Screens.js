@@ -26,8 +26,7 @@ import CustomDrawerContent from "./Menu";
 import { Icon, Header } from "../components";
 import { Images, materialTheme } from "../constants/";
 import OrderList from "../screens/User/Orderlist";
-import ShareScreen from '../components/Share'
-
+import ShareScreen from "../components/Share";
 
 const { width } = Dimensions.get("screen");
 
@@ -42,23 +41,13 @@ const profile = {
 
 function CategoryStack(props) {
   return (
-    <Stack.Navigator
-      initialRouteName="Category"
-      mode="card"
-      headerMode="screen"
-    >
+    <Stack.Navigator initialRouteName="Categories" mode="card" headerMode="screen">
       <Stack.Screen
         name="Categories"
         component={Categories}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Categories"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white transparent title="Categories" scene={scene} navigation={navigation} />
           ),
         }}
       />
@@ -68,23 +57,13 @@ function CategoryStack(props) {
 
 function PasswordStack(props) {
   return (
-    <Stack.Navigator
-      initialRouteName="Change Password"
-      mode="card"
-      headerMode="screen"
-    >
+    <Stack.Navigator initialRouteName="Change Password" mode="card" headerMode="screen">
       <Stack.Screen
         name="Change Password"
         component={ChangePassword}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Change Password"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white transparent title="Change Password" scene={scene} navigation={navigation} />
           ),
         }}
       />
@@ -100,13 +79,7 @@ function ProfileStack(props) {
         component={ProfileScreen}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Profile"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white transparent title="Profile" scene={scene} navigation={navigation} />
           ),
           headerTransparent: true,
         }}
@@ -116,14 +89,7 @@ function ProfileStack(props) {
         component={User}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              back
-              transparent
-              title="Profile"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white back transparent title="Profile" scene={scene} navigation={navigation} />
           ),
           headerTransparent: true,
         }}
@@ -133,14 +99,7 @@ function ProfileStack(props) {
         component={Address}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              back
-              transparent
-              title="Address"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white back transparent title="Address" scene={scene} navigation={navigation} />
           ),
           headerTransparent: true,
         }}
@@ -150,14 +109,7 @@ function ProfileStack(props) {
         component={ChangePassword}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              back
-              transparent
-              title="Change Password"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white back transparent title="Change Password" scene={scene} navigation={navigation} />
           ),
           headerTransparent: true,
         }}
@@ -167,14 +119,7 @@ function ProfileStack(props) {
         component={OrderList}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              back
-              transparent
-              title="Order List"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white back transparent title="Order List" scene={scene} navigation={navigation} />
           ),
           headerTransparent: true,
         }}
@@ -190,18 +135,14 @@ function SigninStack(props) {
         name="Signin"
         component={Signin}
         options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Signin" scene={scene} navigation={navigation} />
-          ),
+          header: ({ navigation, scene }) => <Header title="Signin" scene={scene} navigation={navigation} />,
         }}
       />
       <Stack.Screen
         name="Signup"
         component={Signup}
         options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Signup" scene={scene} navigation={navigation} />
-          ),
+          header: ({ navigation, scene }) => <Header title="Signup" scene={scene} navigation={navigation} />,
         }}
       />
     </Stack.Navigator>
@@ -218,23 +159,13 @@ function LogoutStack() {
 
 function OrderListStack(props) {
   return (
-    <Stack.Navigator
-      initialRouteName="OrderList"
-      mode="card"
-      headerMode="screen"
-    >
+    <Stack.Navigator initialRouteName="OrderList" mode="card" headerMode="screen">
       <Stack.Screen
         name="OrderList"
         component={OrderList}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Order List"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white transparent title="Order List" scene={scene} navigation={navigation} />
           ),
         }}
       />
@@ -250,13 +181,7 @@ function AddressStack(props) {
         component={Address}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Address"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white transparent title="Address" scene={scene} navigation={navigation} />
           ),
         }}
       />
@@ -271,9 +196,7 @@ function SignupStack(props) {
         name="Sign Up"
         component={Signup}
         options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Signup" scene={scene} navigation={navigation} />
-          ),
+          header: ({ navigation, scene }) => <Header title="Signup" scene={scene} navigation={navigation} />,
         }}
       />
     </Stack.Navigator>
@@ -288,14 +211,7 @@ function HomeStack(props) {
         component={HomeScreen}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              search
-              transparent
-              tabs
-              title="Home"
-              navigation={navigation}
-              scene={scene}
-            />
+            <Header search transparent tabs title="Home" navigation={navigation} scene={scene} />
           ),
         }}
       />
@@ -304,13 +220,7 @@ function HomeStack(props) {
         component={ProductDetail}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Product Detail"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white transparent title="Product Detail" scene={scene} navigation={navigation} />
           ),
         }}
       />
@@ -319,13 +229,7 @@ function HomeStack(props) {
         component={Checkout}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Checkout"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header white transparent title="Checkout" scene={scene} navigation={navigation} />
           ),
         }}
       />
@@ -334,30 +238,17 @@ function HomeStack(props) {
         component={Receipt}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              back
-              transparent
-              title="Receipt"
-              scene={scene}
-              navigation={navigation}
-            />
+            <Header back transparent title="Receipt" scene={scene} navigation={navigation} />
           ),
         }}
       />
       <Stack.Screen
         name="Categories"
-        component={Categories}
+        component={CategoryStack}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              back
-              transparent
-              title="Categories"
-              navigation={navigation}
-              scene={scene}
-            />
+            <Header back transparent title="Categories" navigation={navigation} scene={scene} />
           ),
-          headerTransparent: true,
         }}
       />
       <Stack.Screen
@@ -365,13 +256,7 @@ function HomeStack(props) {
         component={Search}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              white
-              transparent
-              title="Search"
-              navigation={navigation}
-              scene={scene}
-            />
+            <Header white back transparent title="Search" navigation={navigation} scene={scene} />
           ),
           headerTransparent: true,
         }}
@@ -384,9 +269,7 @@ function AppStack(props) {
   return (
     <Drawer.Navigator
       style={{ flex: 1 }}
-      drawerContent={(props) => (
-        <CustomDrawerContent {...props} profile={profile} />
-      )}
+      drawerContent={(props) => <CustomDrawerContent {...props} profile={profile} />}
       drawerStyle={{
         backgroundColor: "white",
         width: width * 0.8,
@@ -416,18 +299,14 @@ function AppStack(props) {
         name="Home"
         component={HomeStack}
         options={{
-          drawerIcon: ({ focused }) => (
-            <Icon size={16} name="shop" family="GalioExtra" color={focused} />
-          ),
+          drawerIcon: ({ focused }) => <Icon size={16} name="shop" family="GalioExtra" color={focused} />,
         }}
       />
       <Drawer.Screen
         name="Categories"
         component={CategoryStack}
         options={{
-          drawerIcon: ({ focused }) => (
-            <Icon size={16} name="list" family="Entypo" color={focused} />
-          ),
+          drawerIcon: ({ focused }) => <Icon size={16} name="list" family="Entypo" color={focused} />,
         }}
       />
       <Drawer.Screen
@@ -448,9 +327,7 @@ function AppStack(props) {
         name="OrderList"
         component={OrderListStack}
         options={{
-          drawerIcon: ({ focused }) => (
-            <Icon size={16} name="order" family="entypo" color={focused} />
-          ),
+          drawerIcon: ({ focused }) => <Icon size={16} name="order" family="entypo" color={focused} />,
         }}
       />
       <Drawer.Screen
@@ -489,12 +366,7 @@ function AppStack(props) {
         component={LoginFlow}
         options={{
           drawerIcon: ({ focused }) => (
-            <Icon
-              size={16}
-              name="ios-log-in"
-              family="ionicon"
-              color={focused ? "white" : materialTheme.COLORS.MUTED}
-            />
+            <Icon size={16} name="ios-log-in" family="ionicon" color={focused ? "white" : materialTheme.COLORS.MUTED} />
           ),
         }}
       />
@@ -557,11 +429,7 @@ export default function OnboardingStack({ navigation }) {
         header: null,
       }}
     >
-      <Stack.Screen
-        name="ResolveAuthScreen"
-        component={ResolveAuthScreen}
-        options={{ gestureEnabled: false }}
-      />
+      <Stack.Screen name="ResolveAuthScreen" component={ResolveAuthScreen} options={{ gestureEnabled: false }} />
       <Stack.Screen
         name="Onboarding"
         component={OnboardingScreen}
@@ -570,11 +438,7 @@ export default function OnboardingStack({ navigation }) {
         }}
       />
       <Stack.Screen name="LoginFlow" component={LoginFlow} />
-      <Stack.Screen
-        name="MainFlow"
-        component={MainFlow}
-        options={{ gestureEnabled: false }}
-      />
+      <Stack.Screen name="MainFlow" component={MainFlow} options={{ gestureEnabled: false }} />
     </Stack.Navigator>
   );
 }

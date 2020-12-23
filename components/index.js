@@ -10,6 +10,8 @@ import Cart from "./Cart";
 import CartItem from "./CartItem";
 import CheckoutItem from "./CheckoutItem";
 import CustomerForm from "./CustomerForm";
+import Accordion from './Accordion';
+
 export {
   Button,
   Icon,
@@ -23,4 +25,5 @@ export {
   CartItem,
   CheckoutItem,
   CustomerForm,
+  Accordion,
 };

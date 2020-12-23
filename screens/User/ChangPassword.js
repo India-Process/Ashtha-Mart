@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
-
 import { Block, Button, Input, Text } from "galio-framework";
-
 import { materialTheme } from "../../constants";
-import { connect } from "react-redux";
 
+//redux
+import { connect } from "react-redux";
 import { resetPassword, userValue } from "../../redux/actions/userAction";
 
 class ChangePassword extends Component {

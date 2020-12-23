@@ -1,13 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import { TouchableOpacity, StyleSheet, Dimensions } from "react-native";
-import { Block, NavBar, Input, Text, theme } from "galio-framework";
-
+import { Block, NavBar, Input, Text, theme, Button } from "galio-framework";
 import Icon from "./Icon";
 
+//redux
 import { connect } from "react-redux";
 import { materialTheme } from "../constants";
 
-const { width } = Dimensions.get("window");
+//styles
+const { width, height } = Dimensions.get("window");
 const iPhoneX = () => Platform.OS === "ios" && (height === 812 || width === 812 || height === 896 || width === 896);
 
 const BasketButton = ({ style, navigation, item }) => (
@@ -25,7 +26,7 @@ const SearchButton = ({ style, navigation }) => (
   </TouchableOpacity>
 );
 
-class Header extends React.Component {
+class Header extends Component {
   handleLeftPress = () => {
     const { back, navigation } = this.props;
     return back ? navigation.goBack() : navigation.openDrawer();
@@ -51,10 +52,7 @@ class Header extends React.Component {
       case "Product":
         return [<BasketButton key="basket-product" navigation={navigation} isWhite={white} item={cartItems.length} />];
       case "Search":
-        return [
-          <SearchButton key="basket-key" navigation={navigation} isWhite={white} />,
-          <BasketButton key="basket-search" navigation={navigation} isWhite={white} item={cartItems.length} />,
-        ];
+        return [<BasketButton key="basket-search" navigation={navigation} isWhite={white} item={cartItems.length} />];
       case "Settings":
         return [<BasketButton key="basket-search" navigation={navigation} item={cartItems.length} />];
       case "Signin":
@@ -78,25 +76,53 @@ class Header extends React.Component {
     }
   };
 
-  renderSearch = () => {
+  // renderSearch = () => {
+  //   const { navigation } = this.props;
+  //   return (
+  //     <Input
+  //       right
+  //       color="black"
+  //       style={styles.search}
+  //       placeholder="What are you looking for?"
+  //       placeholderTextColor={materialTheme.COLORS.MUTED}
+  //       onFocus={() => navigation.navigate("Search")}
+  //       iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="magnifying-glass" family="Entypo" />}
+  //     />
+  //   );
+  // };
+
+  renderTabs = () => {
     const { navigation } = this.props;
     return (
-      <Input
-        right
-        color="black"
-        style={styles.search}
-        placeholder="What are you looking for?"
-        placeholderTextColor={materialTheme.COLORS.MUTED}
-        onFocus={() => navigation.navigate("Search")}
-        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="magnifying-glass" family="Entypo" />}
-      />
+      <Block row middle style={[styles.tabs]}>
+        <Block middle>
+          <Button size="small" color={materialTheme.COLORS.WHITE} onPress={() => navigation.navigate("Categories")}>
+            <Block row>
+              <Icon name="grid" family="feather" style={{ paddingRight: 2, color: "gray" }} />
+              <Text size={16} style={styles.tabTitle} color="gray">
+                Categories
+              </Text>
+            </Block>
+          </Button>
+        </Block>
+        <Block middle>
+          <Input
+            right
+            color="black"
+            placeholder="Search for products"
+            placeholderTextColor={materialTheme.COLORS.MUTED}
+            onFocus={() => navigation.navigate("Search")}
+            iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="magnifying-glass" family="Entypo" />}
+          />
+        </Block>
+      </Block>
     );
   };
 
   renderHeader = () => {
-    const { search } = this.props;
-    if (search) {
-      return <Block center>{search ? this.renderSearch() : null}</Block>;
+    const { tabs } = this.props;
+    if (tabs) {
+      return <Block center>{tabs ? this.renderTabs() : null}</Block>;
     }
     return null;
   };
@@ -105,7 +131,7 @@ class Header extends React.Component {
     const { back, title, transparent } = this.props;
     const headerStyles = [transparent ? { backgroundColor: "#e18f34" } : null];
     return (
-      <Block safe style={headerStyles}>
+      <Block safe style={[headerStyles, styles.header]}>
         <NavBar
           back={back}
           title={title}
@@ -118,7 +144,7 @@ class Header extends React.Component {
           }
           right={this.renderRight()}
           rightStyle={{ alignItems: "center" }}
-          leftStyle={{ flex: 0.4, paddingTop: 2, colo: "white" }}
+          leftStyle={{ flex: 0.4, paddingTop: 2, color: "white" }}
           //leftIconName={back ? "chevron-left" : "navicon"}
           leftIconColor={materialTheme.COLORS.WHITE}
           titleStyle={[styles.title, { color: materialTheme.COLORS.WHITE }]}
@@ -147,12 +173,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   navbar: {
+    paddingTop: iPhoneX ? theme.SIZES.BASE * 3 : theme.SIZES.BASE,
     paddingBottom: theme.SIZES.BASE,
     justifyContent: "center",
     alignItems: "center",
     color: materialTheme.COLORS.WHITE,
-    paddingTop: iPhoneX ? theme.SIZES.BASE * 3 : theme.SIZES.BASE,
-    paddingBottom: theme.SIZES.BASE * 1.5,
     zIndex: 5,
   },
   shadow: {
@@ -172,7 +197,9 @@ const styles = StyleSheet.create({
     right: 8,
   },
   header: {
-    backgroundColor: theme.COLORS.WHITE,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: 5,
   },
   divider: {
     borderRightWidth: 0.3,
@@ -186,9 +213,10 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   tabs: {
-    marginBottom: 20,
+    marginBottom: 5,
     marginTop: 2,
-    elevation: 4,
+    elevation: 3,
+    width: width,
   },
   tab: {
     backgroundColor: theme.COLORS.TRANSPARENT,
