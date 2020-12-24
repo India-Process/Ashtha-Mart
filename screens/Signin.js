@@ -27,6 +27,7 @@ class Signin extends Component {
 
   render() {
     const { navigation, loginerror, loginmessage, authloading } = this.props;
+    const {errorMessage}=this.state;
     return (
       <Block safe flex style={{ backgroundColor: theme.COLORS.WHITE }}>
         <KeyboardAvoidingView style={styles.container} behavior="height" enabled>
