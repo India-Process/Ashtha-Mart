@@ -8,7 +8,7 @@ import Carousel from "pinar";
 import { Product, Heading } from "../components";
 import { materialTheme } from "../constants";
 
-const { width, height } = Dimensions.get("screen");
+const { width } = Dimensions.get("screen");
 
 //redux stuff
 import { addToCart } from "../redux/actions/cartAction";
