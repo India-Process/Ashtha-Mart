@@ -11,7 +11,6 @@ const { height } = Dimensions.get("screen");
 class ResolveAuthScreen extends Component {
   async componentDidMount() {
     const { navigation } = this.props;
-
     const user = await AsyncStorage.getItem("user");
 
     if (user) {
